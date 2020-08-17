@@ -6,13 +6,22 @@
 [Blog](https://github.com/purplebamboo/blog/issues)
 
 ## ToDoList:
+<details>
+<summary>知识点列表</summary>
 
-* 虚拟dom对象(Virtual DOM)
-* 虚拟dom差异化算法（diff algorithm）
-* 单向数据流渲染（Data Flow）
-* 组件生命周期
-* 事件处理
-* fiber调度 [参考链接](https://segmentfault.com/a/1190000018250127)
+* [x] 虚拟dom对象(Virtual DOM)
+
+* [x] 虚拟dom差异化算法（diff algorithm）
+
+* [x] 单向数据流渲染（Data Flow）
+
+* [x] 组件生命周期
+
+* [x] 事件处理
+
+* [x] fiber调度 [参考链接](https://segmentfault.com/a/1190000018250127)
+</details>
+
 ```
 旧版 React 通过递归的方式进行渲染，使用的是 JS 引擎自身的函数调用栈，它会一直执行到栈空为止。
 
