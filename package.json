@@ -1,0 +1,33 @@
+{
+  "name": "minireact",
+  "version": "1.0.0",
+  "description": "a light mvvm structure which is similar to React",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build:dev": "node build/build.js env=dev",
+    "build:pro": "node build/build.js env=pro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgh815600709qq/miniReact.git"
+  },
+  "keywords": [
+    "mini",
+    "React"
+  ],
+  "author": "Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wgh815600709qq/miniReact/issues"
+  },
+  "homepage": "https://github.com/wgh815600709qq/miniReact#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1"
+  },
+  "dependencies": {
+    "webpack-cli": "^3.3.12"
+  }
+}
