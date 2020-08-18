@@ -4,7 +4,7 @@ class Component {
     }
 
     render() {
-        
+        throw Error('The instance extends Component, the instance must achieve "render" method')
     }
 }
 
