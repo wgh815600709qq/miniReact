@@ -1,14 +1,24 @@
+const { diff } = require("./diff");
+
+import { diff } from './diff';
 class Component {
-    constructor() {
-        this.state = {}
+    constructor(props) {
+        this.state = {};
+        this.props = props;
+    }
+
+    setState(newState) {
+        this.state = {...this.state, ...newState};
+        const vdom = this.render();
+        diff(this.dom, vdom, this.parent);
     }
 
     render() {
-        throw Error('The instance extends Component, the instance must achieve "render" method')
+        throw new Error('component should define its own render method')
     }
 }
 
-
+export default Component
 
 
 /**

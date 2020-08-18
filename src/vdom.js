@@ -1,4 +1,4 @@
-const PRE_PROPS = '__preProps__'
+const ATTR_KEY = '__preProps__'
 
 // 创建dom元素
 function createElement(vdom) {
@@ -25,7 +25,7 @@ function createElement(vdom) {
 
 // 属性赋值
 function setProps(element, props) {
-    element[PRE_PROPS] = props; // vdom的props挂在__preProps__字段
+    element[ATTR_KEY] = props; // vdom的props挂在__preProps__字段
     
     for (let key in props) {
         element.setAttribute(key, props[key]);
