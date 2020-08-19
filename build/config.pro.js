@@ -5,6 +5,14 @@ module.exports = {
         path: path.resolve(__dirname, '../dist'),
         filename: 'miniReact.min.js'
     },
+    module: {
+        rules: [
+            {
+                test: /\.js|.jsx$/,
+                loader: "babel-loader",
+            }
+        ]
+    },
     devtool: 'eval',
     mode: 'production'
 }

@@ -1,5 +1,6 @@
 # miniReact
 
+# example 测试用例
 
 ## 参考链接
 
@@ -9,6 +10,8 @@
 
 <details>
 <summary>知识点列表</summary>
+
+* [x] babel转义jsx => vdom // most important
 
 * [x] 虚拟dom对象(Virtual DOM)
 
