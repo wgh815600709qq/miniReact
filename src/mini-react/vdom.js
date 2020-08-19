@@ -12,7 +12,7 @@ function vDomToDom(vdom) {
     if (isFunction(vdom.tag)) {
 
     } 
-    
+
     // 一般的元素类型
 
     // 事件处理
@@ -24,7 +24,6 @@ function vDomToDom(vdom) {
 // 属性赋值
 function setProps(element, props) {
     element[ATTR_KEY] = props; // vdom的props挂在__preProps__字段
-    
     for (let key in props) {
         element.setAttribute(key, props[key]);
     }
@@ -36,7 +35,21 @@ function createComponent(vdom) {
     
 }
 
+// 渲染更新自定义组件
+function renderComponent(vdom) {
+
+}
+
+// 虚拟vdom => 真实dom 
+function render (vdom) {
+    const dom = vdomToDom(vdom);
+    if (container) container.appendChild(dom);
+}
 
 export {
-    vDomToDom
+    vDomToDom,
+    render,
+    createComponent,
+    renderComponent,
+    setProps
 }
