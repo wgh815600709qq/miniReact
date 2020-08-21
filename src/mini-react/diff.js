@@ -26,8 +26,14 @@ function diff(oldDom, newVdom) {
     }
     // dom 不改变属性
     diffProps(oldDom, newVdom);
-
+    diffChild(oldDom, newVdom);
     return oldDom
+}
+
+// 对比子节点
+// 先区分是否key
+function diffChild(oldDom, newVdom) {
+
 }
 
 function diffProps(oldDom, newVdom) {
@@ -54,9 +60,6 @@ function diffProps(oldDom, newVdom) {
     }
 }
 
-function diffChild(oldDom, newVdom) {
-
-}
 
 // 非文本的一般组件
 function diffCommonDom(oldDom, newVdom) {
