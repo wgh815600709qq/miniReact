@@ -1,5 +1,6 @@
 import render from './render.js';
 
-export {
+const miniReactDom = {
     render
 }
+export default miniReactDom

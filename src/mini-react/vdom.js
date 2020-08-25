@@ -1,4 +1,4 @@
-import { isFunction, isNumber, isString, isArray } from './utils/typeCheck';
+import { isFunction, isNumber, isString, isArray } from '../utils/typeCheck';
 
 // 创建dom元素, vdom => dom的过程
 function vDomToDom(vdom) {
@@ -26,7 +26,7 @@ function vDomToDom(vdom) {
     dom._props = vdom.props // 挂载
 
     // 属性处理 & 事件处理
-    Object.keys(vdom.props).forEach((key) => {
+    vdom.props && Object.keys(vdom.props).forEach((key) => {
         if (key.substring(0, 2) == 'on') {
             const eventName = key.substring(2).toLowerCase();
             dom.addEventListener(eventName, vdom.props[key].bind(dom));
@@ -84,7 +84,7 @@ function renderComponent(component) {
 
     if (isRenderedComponent) {
         componentWillReceiveProps && component.componentWillReceiveProps(component.props);
-        if (component.shouldComponentUpdate) {
+        if (component.shouldComponentUpdate && component.allowShouldComponentUpdate !== false) {
             const canUpdate = component.shouldComponentUpdate(component.props, component.state);
             if (!canUpdate && canUpdate != undefined) {
                 return false // 不更新
@@ -108,8 +108,8 @@ function renderComponent(component) {
     }
 
     // 最后相互挂载
-    _dom._component = component
-    component._dom = _dom
+    _dom._component = component;
+    component._dom = _dom;
 }
 
 // 虚拟vdom => 真实dom 

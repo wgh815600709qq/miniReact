@@ -1,44 +1,54 @@
-const { diff } = require("./diff");
+import { isFunction } from '../utils/typeCheck'
+import { renderComponent } from './vdom'
+import { defer } from '../utils/defer'
 
-import { diff } from './diff';
-
-
-class Component {
-    constructor(props) {
-        this.state = {};
-        this.props = props || {};
-    }
-
-    setState(newState, cb) {
-        this.state = {...this.state, ...newState};
-        const vdom = this.render();
-        diff(this.dom, vdom);
-    }
-
-    forceUpdate() {
-
-    }
-
-    render() {
-        throw new Error(`User defined Component should own it's self render method`)
-    }
+function Component(props) {
+  this.props = props || {}
+  this.state = {}
 }
 
+// update the state of component and rerender
+Component.prototype.setState = function(updater, cb) {
+  asyncRender(updater, this, cb)
+}
 
+// force to update
+Component.prototype.forceUpdate = function(cb) {
+  this.allowShouldComponentUpdate = false
+  asyncRender({}, this, cb)
+}
 
-
-
-export default Component
-
+let componentArr = []
 
 /**
- *     class A extends Component {
- *          constructor() {
- * 
- *          }
- *          
- *          render() {
- * 
- *          }
- *     }
+ * async render
+ * @param {*} updater
+ * @param {*} component
+ * @param {*} cb
  */
+function asyncRender(updater, component, cb) {
+  if (componentArr.length === 0) {
+    defer(() => render())
+  }
+
+  if (cb) defer(cb)
+  if (isFunction(updater)) {
+    updater = updater(component.state, component.props)
+  }
+  component.state = Object.assign({}, component.state, updater)
+  if (componentArr.includes(component)) {
+    component.state = Object.assign({}, component.state, updater)
+  } else {
+    componentArr.push(component)
+  }
+}
+
+function render() {
+  let component
+  while (component = componentArr.shift()) {
+    renderComponent(component) // rerender
+    component.allowShouldComponentUpdate = true
+  }
+}
+
+export default Component

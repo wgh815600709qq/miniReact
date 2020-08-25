@@ -1,7 +1,6 @@
-import Component from './component';
-import createElement from './createElement';
 
-export {
-    Component,
+import createElement from './createElement';
+const miniReact = {
     createElement
 }
+export default miniReact

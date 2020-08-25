@@ -1,33 +1,31 @@
 {
-    "plugins": [
-      "transform-es2015-destructuring",
-      "transform-class-properties", ["transform-object-rest-spread", {
-        "useBuiltIns": true
-      }],
-      ["transform-react-jsx", {
-        "useBuiltIns": true
-      }],
-      ["transform-runtime", {
-        "helpers": false,
-        "polyfill": false,
-        "regenerator": true
-      }],
-      "transform-react-jsx-source",
-      "transform-react-jsx-self",
-      "transform-regenerator",
-      "syntax-dynamic-import"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": "> 0.25%, not dead",
+        "useBuiltIns": "entry"
+      }
     ],
-    "presets": [
-      ["env",
-        {
-          "targets": {
-            "ie": 9,
-            "uglify": true
-          },
-          "useBuiltIns": false,
-          "modules": false
-        }
-      ],
-      "react"
+    [
+      "@babel/preset-react",
+      {
+        "pragma": "miniReact.createElement"
+      }
     ]
-  }
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ]
+  ]
+}

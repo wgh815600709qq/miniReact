@@ -1,9 +1,9 @@
-import { createElement } from '../vdom';
+import { vDomToDom } from '../mini-react/vdom';
 
 function render (component, container) {
     // 先清空dom
     if (container) container.innerHTML = null;
-    const dom = createElement(component);
+    const dom = vDomToDom(component);
     if (container) {
         container.appendChild(dom);
     } else {

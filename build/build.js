@@ -1,11 +1,15 @@
 const devConfig = require('./config.dev');
 const proConfig = require('./config.pro');
+const testConfig = require('./config.test');
 const webpack = require('webpack');
 let config
 const env = process.argv[2].slice(4)
 if (env == 'dev') {
     console.log('dev')
     config = devConfig;
+} else if (env == 'test') {
+    console.log('test')
+    config = testConfig;
 } else {
     console.log('pro')
     config = proConfig;
